@@ -48,10 +48,10 @@ $(PROGNAME).hex: $(PROGNAME)-stripped
 
 # Program the chip, using avrdude and the variables set above
 program: $(PROGNAME).hex
-	$(AVRDUDE) -p $(AVRDUDE_PART) -c $(AVRDUDE_PROG) -P $(AVRDUDE_PORT) -U flash:w:$(PROGNAME).hex 
+	$(AVRDUDE) -p $(AVRDUDE_PART) -c $(AVRDUDE_PROG) -U flash:w:$(PROGNAME).hex 
 
 fuses:	
-	$(AVRDUDE) -p $(AVRDUDE_PART) -c $(AVRDUDE_PROG) -P $(AVRDUDE_PORT) -U hfuse:w:high.txt:s -U lfuse:w:low.txt:s
+	$(AVRDUDE) -p $(AVRDUDE_PART) -c $(AVRDUDE_PROG) -U hfuse:w:high.txt:s -U lfuse:w:low.txt:s
 	
 # Cleanup, leave only makefile and any .c/.h files
 clean:
